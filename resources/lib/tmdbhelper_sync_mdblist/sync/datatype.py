@@ -1,6 +1,6 @@
 from tmdbhelper.lib.addon.consts import MDBLIST_MAX_ITEMS_PER_PAGE
 from tmdbhelper.lib.sync.datatype import DataType, DataTypeEpisodesInShows
-from .pagination import (
+from tmdbhelper_sync_mdblist.sync.pagination import (
     MDbListSyncCollection,
     MDbListSyncCollectionSnapshot,
     MDbListSyncCollectionOffset,
@@ -20,7 +20,7 @@ class MDbListDataType(DataType):
 
     @property
     def syncitem_class(self):
-        from .itemdata import MDbListSyncItem
+        from tmdbhelper_sync_mdblist.sync.itemdata import MDbListSyncItem
         return MDbListSyncItem
 
     def get_syncitem(self, meta):
@@ -62,5 +62,5 @@ class MDbListDataTypeEpisodesInShows(DataTypeEpisodesInShows, MDbListDataType):
 class MDbListDataTypeEpisodesToShows(MDbListDataTypeEpisodesInShows):
     @property
     def syncitem_class(self):
-        from .itemdata import MDbListSyncItemEpisodesToShows
+        from tmdbhelper_sync_mdblist.sync.itemdata import MDbListSyncItemEpisodesToShows
         return MDbListSyncItemEpisodesToShows

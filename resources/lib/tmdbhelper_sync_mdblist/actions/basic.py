@@ -1,4 +1,4 @@
-from .item import ItemSync
+from tmdbhelper_sync_mdblist.actions.item import ItemSync
 from tmdbhelper.lib.script.sync.actions import (
     ItemWatched as BasicItemWatched,
     ItemUnwatched as BasicItemUnwatched,
@@ -37,7 +37,7 @@ class ItemCollection(ItemSync, BasicItemCollection):
             self.season,
             self.episode,
             key=self.sync_key,
-            item_type=self.trakt_type
+            item_type=self.item_type
         )
 
 

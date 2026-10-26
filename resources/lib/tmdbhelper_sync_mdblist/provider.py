@@ -1,9 +1,9 @@
 from jurialmunkey.ftools import cached_property
 from tmdbhelper.lib.sync.providers.base import SyncProvider
-from .sync import synctype, datasync
-from .actions import basic
-from .actions.progress import ItemProgress
-from .scrobbler import ProviderScrobbler
+from tmdbhelper_sync_mdblist.sync import synctype, datasync
+from tmdbhelper_sync_mdblist.actions import basic
+from tmdbhelper_sync_mdblist.actions.progress import ItemProgress
+from tmdbhelper_sync_mdblist.scrobbler import ProviderScrobbler
 
 
 class Provider(SyncProvider):
