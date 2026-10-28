@@ -1,3 +1,4 @@
+from tmdbhelper_sync_mdblist.api import MDbListContainerAPIs
 from tmdbhelper.lib.items.directories.tmdb.lists_standard import ListStandard
 from tmdbhelper_sync_mdblist.directories.lists_local import ListMDbListLocalNoCacheProperties
 from tmdbhelper.lib.items.directories.lists_local import UncachedListLocalData
@@ -82,7 +83,7 @@ class ListMDbListListsOfficialProperties(ListMDbListListsProperties):
         return self.item_mapper_class(item, add_infoproperties, tmdb_type=self.tmdb_type).item
 
 
-class ListMDbListListsTop(ListStandard):
+class ListMDbListListsTop(MDbListContainerAPIs, ListStandard):
 
     list_properties_class = ListMDbListListsProperties
 

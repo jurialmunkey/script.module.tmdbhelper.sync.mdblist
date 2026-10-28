@@ -1,3 +1,4 @@
+from tmdbhelper_sync_mdblist.api import MDbListContainerAPIs
 from tmdbhelper.lib.items.directories.lists_default import ListProperties, ListDefault
 from tmdbhelper.lib.items.directories.tmdb.lists_standard import ListStandard
 from tmdbhelper_sync_mdblist.directories.lists_local import ListMDbListLocalProperties
@@ -43,7 +44,7 @@ class ListMDbListStreamingChartProperties(ListMDbListLocalProperties):
         return self.item_mapper_class(item, add_infoproperties, trakt_type=self.trakt_type).item
 
 
-class ListMDbListStreamingChart(ListStandard):
+class ListMDbListStreamingChart(MDbListContainerAPIs, ListStandard):
 
     list_properties_class = ListMDbListStreamingChartProperties
 

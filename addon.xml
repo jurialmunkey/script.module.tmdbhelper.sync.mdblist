@@ -8,7 +8,7 @@
     <extension point="xbmc.python.module" library="resources/lib"/>
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">MDbList sync provider for TMDbHelper</summary>
-        <description lang="en_GB">Data sync, synced-state actions, scrobbling, list directories, ratings and monitored lists for TMDbHelper.</description>
+        <description lang="en_GB">MDbList API access, account settings, data sync, static-list actions, scrobbling, list directories, ratings and monitored lists for TMDbHelper.</description>
         <platform>all</platform>
         <license>GPL-3.0-or-later</license>
         <assets>

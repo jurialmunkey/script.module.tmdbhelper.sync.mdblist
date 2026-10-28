@@ -3,6 +3,8 @@ from tmdbhelper.lib.sync.providers.base import SyncProvider
 from tmdbhelper_sync_mdblist.sync import synctype, datasync
 from tmdbhelper_sync_mdblist.actions import basic
 from tmdbhelper_sync_mdblist.actions.progress import ItemProgress
+from tmdbhelper_sync_mdblist.actions.userlist import ItemUserList
+from tmdbhelper_sync_mdblist.settings import MDbListSettings
 from tmdbhelper_sync_mdblist.scrobbler import ProviderScrobbler
 from tmdbhelper_sync_mdblist.monitor_lists import MDbListMonitorLists
 from tmdbhelper_sync_mdblist.directories.item import MDbListDirectoryItem
@@ -36,6 +38,7 @@ class Provider(SyncProvider):
         'dropped': basic.ItemDropped,
         'progress': ItemProgress,
     }
+    service_action_classes = {'mdblistuser': ItemUserList}
     getter_classes = {
         'movies_to_watch': datasync.MDbListSyncDataGetterAllUnHiddenMoviesToWatch,
         'shows_to_watch': datasync.MDbListSyncDataGetterAllUnHiddenShowsToWatch,
@@ -57,8 +60,11 @@ class Provider(SyncProvider):
         return self.get_api()
 
     def get_api(self):
-        from tmdbhelper.lib.api.mdblist.api import MDbListAPI
+        from tmdbhelper_sync_mdblist.api import MDbListAPI
         return MDbListAPI()
+
+    def migrate_settings(self):
+        MDbListSettings().migrate_settings()
 
     def is_authorized(self):
         return self.api is not None
