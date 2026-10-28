@@ -6,6 +6,11 @@ from tmdbhelper_sync_mdblist.actions.progress import ItemProgress
 from tmdbhelper_sync_mdblist.scrobbler import ProviderScrobbler
 from tmdbhelper_sync_mdblist.directories.item import MDbListDirectoryItem
 from tmdbhelper_sync_mdblist.directories.routes import LIST_ROUTES
+from tmdbhelper_sync_mdblist.ratings import (
+    MDbListRatingsSupplier,
+    MDbListSeasonRatingsSupplier,
+    MDbListEpisodeRatingsSupplier,
+)
 
 
 class Provider(SyncProvider):
@@ -34,6 +39,12 @@ class Provider(SyncProvider):
         'movies_to_watch': datasync.MDbListSyncDataGetterAllUnHiddenMoviesToWatch,
         'shows_to_watch': datasync.MDbListSyncDataGetterAllUnHiddenShowsToWatch,
         'shows_in_progress': datasync.MDbListSyncDataGetterAllUnHiddenShowsInProgress,
+    }
+    ratings_classes = {
+        'movie': MDbListRatingsSupplier,
+        'tvshow': MDbListRatingsSupplier,
+        'season': MDbListSeasonRatingsSupplier,
+        'episode': MDbListEpisodeRatingsSupplier,
     }
     scrobbler_class = ProviderScrobbler
     directory_item_class = MDbListDirectoryItem
