@@ -4,6 +4,8 @@ from tmdbhelper_sync_mdblist.sync import synctype, datasync
 from tmdbhelper_sync_mdblist.actions import basic
 from tmdbhelper_sync_mdblist.actions.progress import ItemProgress
 from tmdbhelper_sync_mdblist.scrobbler import ProviderScrobbler
+from tmdbhelper_sync_mdblist.directories.item import MDbListDirectoryItem
+from tmdbhelper_sync_mdblist.directories.routes import LIST_ROUTES
 
 
 class Provider(SyncProvider):
@@ -34,6 +36,8 @@ class Provider(SyncProvider):
         'shows_in_progress': datasync.MDbListSyncDataGetterAllUnHiddenShowsInProgress,
     }
     scrobbler_class = ProviderScrobbler
+    directory_item_class = MDbListDirectoryItem
+    list_routes = LIST_ROUTES
 
     @cached_property
     def api(self):
