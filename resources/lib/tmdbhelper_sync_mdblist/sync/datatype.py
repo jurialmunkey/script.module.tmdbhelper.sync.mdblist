@@ -1,4 +1,4 @@
-from tmdbhelper.lib.addon.consts import MDBLIST_MAX_ITEMS_PER_PAGE
+from tmdbhelper_sync_mdblist.consts import MDBLIST_MAX_ITEMS_PER_PAGE
 from tmdbhelper.lib.sync.datatype import DataType, DataTypeEpisodesInShows
 from tmdbhelper_sync_mdblist.sync.pagination import (
     MDbListSyncCollection,
