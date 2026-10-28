@@ -4,6 +4,7 @@ from tmdbhelper_sync_mdblist.sync import synctype, datasync
 from tmdbhelper_sync_mdblist.actions import basic
 from tmdbhelper_sync_mdblist.actions.progress import ItemProgress
 from tmdbhelper_sync_mdblist.scrobbler import ProviderScrobbler
+from tmdbhelper_sync_mdblist.monitor_lists import MDbListMonitorLists
 from tmdbhelper_sync_mdblist.directories.item import MDbListDirectoryItem
 from tmdbhelper_sync_mdblist.directories.routes import LIST_ROUTES
 from tmdbhelper_sync_mdblist.ratings import (
@@ -47,6 +48,7 @@ class Provider(SyncProvider):
         'episode': MDbListEpisodeRatingsSupplier,
     }
     scrobbler_class = ProviderScrobbler
+    monitor_lists_class = MDbListMonitorLists
     directory_item_class = MDbListDirectoryItem
     list_routes = LIST_ROUTES
 
