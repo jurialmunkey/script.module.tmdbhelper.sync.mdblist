@@ -11,6 +11,11 @@ from tmdbhelper.lib.script.sync.actions import (
 class ItemWatched(ItemSync, BasicItemWatched):
     sync_url = 'sync/watched'
 
+    def get_sync_invalidator(self):
+        from tmdbhelper_sync_mdblist.sync.action_invalidator import MDbListWatchedActionInvalidator
+        return MDbListWatchedActionInvalidator(
+            self.syncdata, self.sync_provider, self.get_sync_dependencies(), self.remove)
+
 
 class ItemUnwatched(ItemWatched, BasicItemUnwatched):
     pass

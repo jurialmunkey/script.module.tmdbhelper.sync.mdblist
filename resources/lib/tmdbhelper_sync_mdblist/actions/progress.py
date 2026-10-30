@@ -4,6 +4,7 @@ from tmdbhelper.lib.script.sync.progress import ItemProgress as BasicItemProgres
 
 
 class ItemProgress(ItemSync, BasicItemProgress):
+    sync_types = ('SyncPlayback',)
 
     def get_post_response_args(self):
         return ('scrobble/clear', )
