@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from jurialmunkey.ftools import cached_property
 from tmdbhelper.lib.sync.datasync import (
+    SyncDataGetter,
     SyncDataGetterAll,
     SyncDataGetterAllMoviesToWatch,
     SyncDataGetterAllShowsToWatch,
@@ -49,13 +50,7 @@ class MDbListSyncDataGetterAllUnHiddenShowsToWatch(SyncDataGetterAllShowsToWatch
     filter_keys = ('dropped_hidden_at', )
 
 
-class MDbListSyncDataGetterAllUnHiddenShowsInProgress:
-    additional_keys = ()
-
-    def __init__(self, instance_syncdata, provider):
-        self.instance_syncdata = instance_syncdata
-        self.provider = provider
-
+class MDbListSyncDataGetterAllUnHiddenShowsInProgress(SyncDataGetter):
     @cached_property
     def parent_getter(self):
         return self.get_parent_getter()
@@ -72,17 +67,12 @@ class MDbListSyncDataGetterAllUnHiddenShowsInProgress:
     def get_keys(self):
         return self.parent_getter.keys
 
-    @cached_property
-    def sync_succeeded(self):
+    def get_sync_succeeded(self):
         return self.parent_getter.sync_succeeded
 
     @property
     def parent_additional_keys(self):
         return ('aired_episodes', 'watched_episodes', 'dropped_hidden_at', 'last_watched_at', *(self.additional_keys or ()))
-
-    @cached_property
-    def items(self):
-        return self.get_items()
 
     def is_inprogress(self, item):
         if not item['aired_episodes']:

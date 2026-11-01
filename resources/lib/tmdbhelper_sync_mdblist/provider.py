@@ -17,7 +17,7 @@ from tmdbhelper_sync_mdblist.ratings import (
 
 
 class Provider(SyncProvider):
-    interface_version = 3
+    interface_version = 4
     provider_id = 'mdblist'
     display_name = 'MDbList'
     sync_classes = {
