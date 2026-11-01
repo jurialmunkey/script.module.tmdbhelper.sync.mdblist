@@ -88,7 +88,7 @@ class ListMDbListSortProperties(ListProperties):
 
 class ListMDbListSortBy(ListDefault):
     list_properties_class = ListMDbListSortProperties
-    kodi_db = None
+    kodi_details = False
     get_sort_methods = staticmethod(get_sort_methods)
 
     def configure_list_properties(self, list_properties):

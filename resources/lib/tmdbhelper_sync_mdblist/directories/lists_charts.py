@@ -89,7 +89,7 @@ class ListMDbListStreamingChartsProperties(ListProperties):
 class ListMDbListStreamingCharts(ListDefault):
 
     list_properties_class = ListMDbListStreamingChartsProperties
-    kodi_db = None
+    kodi_details = False
 
     def configure_list_properties(self, list_properties):
         list_properties = super().configure_list_properties(list_properties)
