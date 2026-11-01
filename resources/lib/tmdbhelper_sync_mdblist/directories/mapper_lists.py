@@ -9,6 +9,7 @@ class ListsMDbListItemMapper(MediaItemMapper):
 
     tmdb_type = ''
     mediatype = ''
+    delete_like = False
 
     @cached_property
     def label(self):
@@ -35,13 +36,31 @@ class ListsMDbListItemMapper(MediaItemMapper):
         infoproperties['is_sortable'] = 'mdblist'
         return infoproperties
 
-    def get_context_menu(self):
+    def get_sort_context_menu(self):
         return [
             (
                 get_localized(32309),
                 RUNSCRIPT.format('sort_mdblist,{}'.format(','.join(f'{k}={v}' for k, v in self.params.items())))
             ),
         ]
+
+    def get_like_context_menu(self):
+        command = f'like_mdblist={self.meta["id"]}'
+        command = f'{command},delete' if self.delete_like else command
+        return [
+            (
+                get_localized(32319 if self.delete_like else 32315),
+                RUNSCRIPT.format(command)
+            ),
+        ]
+
+    def get_context_menu(self):
+        return self.get_sort_context_menu() + [
+            (
+                get_localized(20444),
+                RUNSCRIPT.format(f'user_list={self.meta["id"]},user_slug=__api_mdblist__')
+            ),
+        ] + self.get_like_context_menu()
 
     def get_unique_ids(self):
         unique_ids = {
@@ -62,11 +81,18 @@ class ListsMDbListItemMapper(MediaItemMapper):
         return params
 
 
+class LikedListsMDbListItemMapper(ListsMDbListItemMapper):
+    delete_like = True
+
+
 class OfficialListsMDbListItemMapper(ListsMDbListItemMapper):
 
     def __init__(self, *args, tmdb_type, **kwargs):
         super().__init__(*args, **kwargs)
         self.tmdb_type = tmdb_type
+
+    def get_context_menu(self):
+        return self.get_sort_context_menu()
 
     def get_params(self):
         params = super().get_params()

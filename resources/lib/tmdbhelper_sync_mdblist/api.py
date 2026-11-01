@@ -21,6 +21,11 @@ class MDbList(RequestAPI):
         path = self.get_request_url('lists', list_id, 'items', action)
         return self.get_api_request(path, postdata=item, method='json')
 
+    def like_list(self, list_id, delete=False):
+        path = self.get_request_url('lists', list_id, 'like')
+        return self.get_api_request(
+            path, headers=self.headers, method='delete' if delete else 'put')
+
     def get_details(
             self, media_type, media_id, media_provider='tmdb',
             append_to_response='keyword,episode_ratings'):

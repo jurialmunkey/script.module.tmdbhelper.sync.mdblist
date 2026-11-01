@@ -3,7 +3,11 @@ from tmdbhelper.lib.items.directories.tmdb.lists_standard import ListStandard
 from tmdbhelper_sync_mdblist.directories.lists_local import ListMDbListLocalNoCacheProperties
 from tmdbhelper.lib.items.directories.lists_local import UncachedListLocalData
 from tmdbhelper_sync_mdblist.directories.lists_custom import UncachedMDbListCustomData
-from tmdbhelper_sync_mdblist.directories.mapper_lists import ListsMDbListItemMapper, OfficialListsMDbListItemMapper
+from tmdbhelper_sync_mdblist.directories.mapper_lists import (
+    ListsMDbListItemMapper,
+    LikedListsMDbListItemMapper,
+    OfficialListsMDbListItemMapper,
+)
 from jurialmunkey.ftools import cached_property
 from tmdbhelper.lib.addon.plugin import get_localized, convert_type
 
@@ -56,6 +60,7 @@ class UncachedMDbListLikedData(UncachedMDbListCustomData):
 
 class ListMDbListListsLikedProperties(ListMDbListListsProperties):
 
+    item_mapper_class = LikedListsMDbListItemMapper
     limit = 100
 
     @cached_property
