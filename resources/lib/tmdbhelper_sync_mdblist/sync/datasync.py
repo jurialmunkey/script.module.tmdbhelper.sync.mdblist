@@ -72,6 +72,10 @@ class MDbListSyncDataGetterAllUnHiddenShowsInProgress:
     def get_keys(self):
         return self.parent_getter.keys
 
+    @cached_property
+    def sync_succeeded(self):
+        return self.parent_getter.sync_succeeded
+
     @property
     def parent_additional_keys(self):
         return ('aired_episodes', 'watched_episodes', 'dropped_hidden_at', 'last_watched_at', *(self.additional_keys or ()))

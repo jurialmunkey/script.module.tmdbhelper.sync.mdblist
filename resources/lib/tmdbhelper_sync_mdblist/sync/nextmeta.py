@@ -48,10 +48,14 @@ class MDbListSyncAllNextEpisodesMeta(SyncAllNextEpisodesMeta):
 
     def get_watched_episode_ids(self):
         sd = self.main.instance_syncdata.get_all_episode_playcounts_getter()
+        if not sd.sync_succeeded:
+            return
         return frozenset(i['id'] for i in sd.items if i['plays'])
 
     def get_item_queue(self):
         self.watched_episode_ids = self.get_watched_episode_ids()
+        if self.watched_episode_ids is None:
+            return
         return super().get_item_queue()
 
     def get_items(self, item):
