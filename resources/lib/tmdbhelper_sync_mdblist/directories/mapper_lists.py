@@ -34,6 +34,7 @@ class ListsMDbListItemMapper(MediaItemMapper):
     def get_infoproperties(self):
         infoproperties = super().get_infoproperties()
         infoproperties['is_sortable'] = 'mdblist'
+        infoproperties['sortby_info'] = 'mdblist_sortby'
         return infoproperties
 
     def get_sort_context_menu(self):
