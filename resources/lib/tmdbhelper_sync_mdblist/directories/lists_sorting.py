@@ -1,7 +1,7 @@
 from jurialmunkey.ftools import cached_property
 from tmdbhelper.lib.items.directories.lists_default import ListDefault, ListProperties
 from tmdbhelper.lib.items.directories.mapper_basic import ItemMapper
-from tmdbhelper.lib.addon.plugin import get_localized
+from tmdbhelper_sync_mdblist.localization import get_localized
 
 
 def get_sort_methods_asc_desc(sort_by, localized_name):

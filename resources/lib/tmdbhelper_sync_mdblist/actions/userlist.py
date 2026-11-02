@@ -1,5 +1,6 @@
 from tmdbhelper_sync_mdblist.actions.service import ItemAction
-from tmdbhelper.lib.addon.plugin import get_infolabel, get_localized
+from tmdbhelper.lib.addon.plugin import get_infolabel
+from tmdbhelper_sync_mdblist.localization import get_localized
 from tmdbhelper.lib.addon.dialog import busy_decorator
 from jurialmunkey.ftools import cached_property
 from xbmcgui import Dialog

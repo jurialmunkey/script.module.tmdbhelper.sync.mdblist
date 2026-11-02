@@ -3,6 +3,7 @@ from tmdbhelper.lib.items.directories.base.basedir_item import BaseDirItem
 from tmdbhelper.lib.items.directories.base.item_builder import BaseDirItemBuilder
 from tmdbhelper_sync_mdblist.directories.artwork import ADDONPATH, get_icon
 from tmdbhelper_sync_mdblist.settings import MDbListSettings
+from tmdbhelper_sync_mdblist.localization import get_localized
 
 
 class MDbListDirItemBuilder(BaseDirItemBuilder):
@@ -16,6 +17,16 @@ class MDbListDirItemBuilder(BaseDirItemBuilder):
 class MDbListDirItem(BaseDirItem):
     item_builder = MDbListDirItemBuilder
     icon_name = 'mdblist'
+
+    @cached_property
+    def label(self):
+        return self.get_label()
+
+    def get_label(self):
+        return {
+            'localize': '{label_localized}',
+            'standard': '{label_localized}{{space}}{{item_type}}',
+        }[self.label_type].format(label_localized=get_localized(self.label_localized))
 
     @cached_property
     def art(self):

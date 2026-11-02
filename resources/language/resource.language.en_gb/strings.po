@@ -16,3 +16,68 @@ msgstr ""
 msgctxt "#32002"
 msgid "Enter your personal MDbList API key."
 msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32067"
+msgid "Budget"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32068"
+msgid "Revenue"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32069"
+msgid "Last Air Date"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32072"
+msgid "Score"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32079"
+msgid "User"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32133"
+msgid "Select List(s)"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py
+msgctxt "#32421"
+msgid "Top Lists"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/like.py /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32516"
+msgid "MDbList API credentials not found."
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/like.py /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32517"
+msgid "Add your personal MDbList API key in the MDbList module settings."
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32518"
+msgid "No static lists found for current MDbList user."
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py /resources/lib/tmdbhelper_sync_mdblist/directories/lists_lists.py
+msgctxt "#32543"
+msgid "Curated Lists"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py /resources/lib/tmdbhelper_sync_mdblist/directories/lists_lists.py
+msgctxt "#32544"
+msgid "Official Lists"
+msgstr ""
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py /resources/lib/tmdbhelper_sync_mdblist/directories/lists_charts.py
+msgctxt "#32545"
+msgid "Streaming Charts"
+msgstr ""

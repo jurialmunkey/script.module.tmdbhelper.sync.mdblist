@@ -1,0 +1,52 @@
+# XBMC Media Center language file
+# Addon Name: TMDbHelper Sync - MDbList
+# Addon id: script.module.tmdbhelper.sync.mdblist
+# Addon Provider: jurialmunkey
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"POT-Creation-Date: 2014-10-26 17:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: hungarian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32133"
+msgid "Select List(s)"
+msgstr "Listák kiválasztása"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py
+msgctxt "#32421"
+msgid "Top Lists"
+msgstr "Toplisták"
+
+#: /resources/settings.xml
+msgctxt "#32000"
+msgid "MDbList API"
+msgstr "MDbList API"
+
+#: /resources/settings.xml
+msgctxt "#32001"
+msgid "MDbList API key"
+msgstr "MDbList API kulcs"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/like.py /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32516"
+msgid "MDbList API credentials not found."
+msgstr "Az MDbList API hitelesítő adatai nem találhatók."
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/like.py /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32517"
+msgid "Add your personal MDbList API key in TMDbHelper settings."
+msgstr "Add hozzá a személyes MDbList API-kulcsodat a TMDbHelper beállításaiban."
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32518"
+msgid "No static lists found for current MDbList user."
+msgstr "Nem találhatók statikus listák az aktuális MDbList felhasználóhoz."

@@ -9,7 +9,8 @@ from tmdbhelper_sync_mdblist.directories.mapper_lists import (
     OfficialListsMDbListItemMapper,
 )
 from jurialmunkey.ftools import cached_property
-from tmdbhelper.lib.addon.plugin import get_localized, convert_type
+from tmdbhelper.lib.addon.plugin import convert_type
+from tmdbhelper_sync_mdblist.localization import get_localized
 
 
 class ListMDbListListsProperties(ListMDbListLocalNoCacheProperties):
@@ -131,8 +132,7 @@ class ListMDbListListsCurated(ListMDbListListsTop):
 
     def configure_list_properties(self, list_properties):
         list_properties = super().configure_list_properties(list_properties)
-        list_properties.plugin_name = '{localized}'
-        list_properties.localize = 32543
+        list_properties.plugin_name = get_localized(32543)
         list_properties.request_url = 'lists/curated'
         return list_properties
 
@@ -143,8 +143,7 @@ class ListMDbListListsOfficial(ListMDbListListsTop):
 
     def configure_list_properties(self, list_properties):
         list_properties = super().configure_list_properties(list_properties)
-        list_properties.plugin_name = '{localized}'
-        list_properties.localize = 32544
+        list_properties.plugin_name = get_localized(32544)
         list_properties.request_url = 'lists/official'
         return list_properties
 

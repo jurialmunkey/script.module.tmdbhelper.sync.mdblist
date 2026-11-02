@@ -1,0 +1,77 @@
+# XBMC Media Center language file
+# Addon Name: TMDbHelper Sync - MDbList
+# Addon id: script.module.tmdbhelper.sync.mdblist
+# Addon Provider: jurialmunkey
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC-Addons\n"
+"Report-Msgid-Bugs-To: havokdan@yahoo.com.br\n"
+"POT-Creation-Date: 2025-11-07 17:05+0000\n"
+"PO-Revision-Date: 2025-07-12 07:19+0000\n"
+"Last-Translator: Havokdan <havokdan@yahoo.com.br>\n"
+"Language-Team: Português do Brasil\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32067"
+msgid "Budget"
+msgstr "Orçamento"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32068"
+msgid "Revenue"
+msgstr "Receita"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32069"
+msgid "Last Air Date"
+msgstr "Data da Última Exibição"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32072"
+msgid "Score"
+msgstr "Avaliação"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/lists_sorting.py
+msgctxt "#32079"
+msgid "User"
+msgstr "Usuário"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32133"
+msgid "Select List(s)"
+msgstr "Selecionar Lista(s)"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py
+msgctxt "#32421"
+msgid "Top Lists"
+msgstr "Melhores Listas"
+
+#: /resources/settings.xml
+msgctxt "#32000"
+msgid "MDbList API"
+msgstr "API MDbList"
+
+#: /resources/settings.xml
+msgctxt "#32001"
+msgid "MDbList API key"
+msgstr "Chave de API MDbList"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/like.py /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32516"
+msgid "MDbList API credentials not found."
+msgstr "Credenciais da API MDbList não encontradas."
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/like.py /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32517"
+msgid "Add your personal MDbList API key in TMDbHelper settings."
+msgstr "Adicionar sua chave pessoal da API MDbList nas configurações do TMDbHelper."
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32518"
+msgid "No static lists found for current MDbList user."
+msgstr "Nenhuma lista estática encontrada para o usuário atual do MDbList."

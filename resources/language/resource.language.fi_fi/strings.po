@@ -1,0 +1,38 @@
+# Kodi addon language file
+# Addon Name: TMDbHelper Sync - MDbList
+# Addon id: script.module.tmdbhelper.sync.mdblist
+# Addon Provider: jurialmunkey
+msgid ""
+msgstr ""
+"Project-Id-Version: TheMovieDB Helper\n"
+"Report-Msgid-Bugs-To: https://github.com/jurialmunkey/plugin.video.themoviedb.helper/issues\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-04-21 14:30+0300\n"
+"Last-Translator: Oskari Lavinto <olavinto@protonmail.com>\n"
+"Language-Team: Finnish\n"
+"Language: fi_FI\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/actions/userlist.py
+msgctxt "#32133"
+msgid "Select List(s)"
+msgstr "Valitse listat"
+
+#: /resources/lib/tmdbhelper_sync_mdblist/directories/basedir.py
+msgctxt "#32421"
+msgid "Top Lists"
+msgstr "Top-listat"
+
+#: /resources/settings.xml
+msgctxt "#32000"
+msgid "MDbList API"
+msgstr "MDbList API"
+
+#: /resources/settings.xml
+msgctxt "#32001"
+msgid "MDbList API key"
+msgstr "MDbList API -avain"

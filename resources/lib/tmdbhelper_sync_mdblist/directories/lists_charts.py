@@ -6,6 +6,7 @@ from tmdbhelper.lib.items.directories.lists_local import UncachedListLocalData
 from tmdbhelper.lib.items.directories.mapper_standard import FactoryItemMapper
 from tmdbhelper_sync_mdblist.directories.mapper_charts import StreamingChartsItemMapper
 from tmdbhelper.lib.addon.plugin import convert_type
+from tmdbhelper_sync_mdblist.localization import get_localized
 from jurialmunkey.parser import try_int
 from jurialmunkey.ftools import cached_property
 
@@ -50,8 +51,7 @@ class ListMDbListStreamingChart(MDbListContainerAPIs, ListStandard):
 
     def configure_list_properties(self, list_properties):
         list_properties = super().configure_list_properties(list_properties)
-        list_properties.plugin_name = '{localized}'
-        list_properties.localize = 32545
+        list_properties.plugin_name = get_localized(32545)
         list_properties.request_url = 'justwatch/streaming-charts/{trakt_type}'
         list_properties.mdblist_api = self.mdblist_api
         return list_properties
@@ -93,7 +93,6 @@ class ListMDbListStreamingCharts(ListDefault):
 
     def configure_list_properties(self, list_properties):
         list_properties = super().configure_list_properties(list_properties)
-        list_properties.plugin_name = '{localized}'
-        list_properties.localize = 32545
+        list_properties.plugin_name = get_localized(32545)
         list_properties.pagination = False
         return list_properties
