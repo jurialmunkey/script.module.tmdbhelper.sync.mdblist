@@ -17,6 +17,9 @@ class MDbListSyncBaseView:
 
     @cached_property
     def seasons(self):
+        return self.get_seasons()
+
+    def get_seasons(self):
         seasons = {}
         for i in self.baseview_factory.data:
             number = i['params']['season']
@@ -34,6 +37,9 @@ class MDbListSyncNextEpisodeItem(SyncNextEpisodeItem):
 
     @cached_property
     def response(self):
+        return self.get_response()
+
+    def get_response(self):
         if not self.tmdb_id:
             return {}
         return MDbListSyncBaseView(self.tmdb_id).data

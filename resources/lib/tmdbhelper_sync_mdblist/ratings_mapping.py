@@ -21,6 +21,9 @@ class MDbListRatingMappingObject:
 
     @cached_property
     def name(self):
+        return self.get_name()
+
+    def get_name(self):
         try:
             return self.meta['source']
         except KeyError:
@@ -28,6 +31,9 @@ class MDbListRatingMappingObject:
 
     @cached_property
     def rating_key(self):
+        return self.get_rating_key()
+
+    def get_rating_key(self):
         try:
             return self.rating_keys[self.name]
         except KeyError:
@@ -35,6 +41,9 @@ class MDbListRatingMappingObject:
 
     @cached_property
     def rating_value(self):
+        return self.get_rating_value()
+
+    def get_rating_value(self):
         try:
             rating = None
             rating = self.meta['value']
@@ -48,6 +57,9 @@ class MDbListRatingMappingObject:
 
     @cached_property
     def votes_value(self):
+        return self.get_votes_value()
+
+    def get_votes_value(self):
         try:
             return self.meta['votes']
         except KeyError:
@@ -81,6 +93,9 @@ class MDbListKeywordRatingMappingObject(MDbListRatingMappingObject):
 
     @cached_property
     def name(self):
+        return self.get_name()
+
+    def get_name(self):
         try:
             return self.meta['name']
         except KeyError:
@@ -88,6 +103,9 @@ class MDbListKeywordRatingMappingObject(MDbListRatingMappingObject):
 
     @cached_property
     def rating_key(self):
+        return self.get_rating_key()
+
+    def get_rating_key(self):
         try:
             return self.rating_keywords[self.name][0]
         except KeyError:
@@ -95,6 +113,9 @@ class MDbListKeywordRatingMappingObject(MDbListRatingMappingObject):
 
     @cached_property
     def rating_value(self):
+        return self.get_rating_value()
+
+    def get_rating_value(self):
         try:
             return self.rating_keywords[self.name][1]
         except KeyError:
@@ -107,6 +128,9 @@ class MDbListRatingMapping:
 
     @cached_property
     def meta_ratings(self):
+        return self.get_meta_ratings()
+
+    def get_meta_ratings(self):
         try:
             return self.meta['ratings']
         except (KeyError, TypeError):
@@ -114,6 +138,9 @@ class MDbListRatingMapping:
 
     @cached_property
     def meta_keywords(self):
+        return self.get_meta_keywords()
+
+    def get_meta_keywords(self):
         try:
             return self.meta['keywords']
         except (KeyError, TypeError):
@@ -121,6 +148,9 @@ class MDbListRatingMapping:
 
     @cached_property
     def ratings(self):
+        return self.get_ratings()
+
+    def get_ratings(self):
         ratings = {
             k: v
             for i in self.meta_ratings
@@ -146,6 +176,9 @@ class MDbListSeasonRatingMapping:
 
     @cached_property
     def meta_episode_ratings(self):
+        return self.get_meta_episode_ratings()
+
+    def get_meta_episode_ratings(self):
         try:
             return self.meta['episode_ratings']
         except (KeyError, TypeError):
@@ -153,6 +186,9 @@ class MDbListSeasonRatingMapping:
 
     @cached_property
     def meta_season(self):
+        return self.get_meta_season()
+
+    def get_meta_season(self):
         try:
             return next((d for d in self.meta_episode_ratings['seasons'] if int(d['season_number']) == int(self.season)))
         except (KeyError, TypeError, StopIteration):
@@ -160,6 +196,9 @@ class MDbListSeasonRatingMapping:
 
     @cached_property
     def ratings(self):
+        return self.get_ratings()
+
+    def get_ratings(self):
         ratings = {}
         ratings['imdb_rating'] = self.meta_season.get('avg')  # MDbList episode_ratings return IMDb scores
         return ratings
@@ -171,6 +210,9 @@ class MDbListEpisodeRatingMapping(MDbListSeasonRatingMapping):
 
     @cached_property
     def meta_episode(self):
+        return self.get_meta_episode()
+
+    def get_meta_episode(self):
         try:
             return next((d for d in self.meta_season['episodes'] if int(d['episode_number']) == int(self.episode)))
         except (KeyError, TypeError, StopIteration):
@@ -178,6 +220,9 @@ class MDbListEpisodeRatingMapping(MDbListSeasonRatingMapping):
 
     @cached_property
     def ratings(self):
+        return self.get_ratings()
+
+    def get_ratings(self):
         ratings = {}
         ratings['imdb_rating'] = self.meta_episode.get('rating')  # MDbList episode_ratings return IMDb scores
         ratings['imdb_votes'] = self.meta_episode.get('votes')  # MDbList episode_ratings return IMDb votes

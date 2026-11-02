@@ -60,14 +60,8 @@ EXAMPLE OUTPUT
 
 
 class ConfigureEpisodeDataItem:
-    def __init__(self, item, meta):
+    def __init__(self, item):
         self.item = item
-        self.meta = meta
-        self.metaepisode  # Initialise the meta
-
-    """
-    Item Values
-    """
 
     @cached_property
     def base(self):
@@ -75,9 +69,7 @@ class ConfigureEpisodeDataItem:
 
     @cached_property
     def show(self):
-        show = self.base['show']
-        show['type'] = 'show'
-        return show
+        return dict(self.base['show'], type='show')
 
     @cached_property
     def tmdb(self):
@@ -91,55 +83,35 @@ class ConfigureEpisodeDataItem:
     def enum(self):
         return self.base['number']
 
-    """
-    Meta Values
-
-    """
-
-    @cached_property
-    def metashow(self):
-        return self.meta.setdefault(self.tmdb, {})
-
-    @cached_property
-    def metaseason(self):
-        metaseason = self.metashow.setdefault('seasons', {})
-        return metaseason.setdefault(self.snum, self.get_season_object(self.snum))
-
-    @cached_property
-    def metaepisode(self):
-        metaepisode = self.metaseason.setdefault('episodes', {})
-        return metaepisode.setdefault(self.enum, self.get_episode_object(self.enum, self.item['last_watched_at']))
-
-    """
-    Finalisation
-    """
-
-    def get_finalised_season(self, season):
-        finalised_season = self.get_season_object(season['number'])
-        finalised_season['episodes'] = list(season['episodes'].values())
-        return finalised_season
-
-    @cached_property
-    def finalised_seasons(self):
-        return [self.get_finalised_season(season) for season in self.metashow['seasons'].values()]
-
-    @cached_property
-    def finalised_object(self):
+    def get_episode(self):
         return {
+            'number': self.enum, 'plays': 1,
             'last_watched_at': self.item['last_watched_at'],
-            'seasons': self.finalised_seasons,
-            'show': self.show,
         }
 
-    """
-    Objects
-    """
 
-    def get_season_object(self, number):
-        return {'number': number}
+class ConfigureEpisodeData:
+    def __init__(self):
+        self.shows = {}
 
-    def get_episode_object(self, number, last_watched_at, plays=1):
-        return {'number': number, 'plays': plays, 'last_watched_at': last_watched_at}
+    def add_item(self, item):
+        data = ConfigureEpisodeDataItem(item)
+        show = self.shows.setdefault(data.tmdb, {'seasons': {}})
+        show.update(show=data.show, last_watched_at=item['last_watched_at'])
+        season = show['seasons'].setdefault(data.snum, {})
+        season.setdefault(data.enum, data.get_episode())
+
+    def get_finalised_show(self, show):
+        return {
+            'last_watched_at': show['last_watched_at'],
+            'seasons': [
+                {'number': number, 'episodes': list(episodes.values())}
+                for number, episodes in show['seasons'].items()],
+            'show': show['show'],
+        }
+
+    def get_items(self):
+        return tuple(self.get_finalised_show(show) for show in self.shows.values())
 
 
 def configure_episode_snapshot(episode_list, show_list):
@@ -169,6 +141,7 @@ def configure_episode_snapshot(episode_list, show_list):
 
 
 def configure_episode_list(episode_list):
-    meta = {}
-    data = [ConfigureEpisodeDataItem(item, meta) for item in episode_list]
-    return tuple((v.finalised_object for v in {i.tmdb: i for i in data}.values()))
+    data = ConfigureEpisodeData()
+    for item in episode_list:
+        data.add_item(item)
+    return data.get_items()

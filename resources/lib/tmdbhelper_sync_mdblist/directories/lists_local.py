@@ -31,6 +31,9 @@ class ListMDbListLocalProperties(ListStandardProperties):
 
     @cached_property
     def container_content(self):
+        return self.get_container_content()
+
+    def get_container_content(self):
         container_content = [
             ('movies', len(self.movies)),
             ('tvshows', len(self.tvshows)),

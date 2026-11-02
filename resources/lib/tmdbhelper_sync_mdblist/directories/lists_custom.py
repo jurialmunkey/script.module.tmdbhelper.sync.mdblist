@@ -38,6 +38,9 @@ class ListMDbListCustomProperties(ListMDbListLocalProperties):
 
     @cached_property
     def cache_name_tuple(self):
+        return self.get_cache_name_tuple()
+
+    def get_cache_name_tuple(self):
         cache_name_tuple = [
             self.class_name,
             self.list_id,
@@ -86,15 +89,9 @@ class ListMDbListCustom(MDbListContainerAPIs, ListStandard):
         return list_properties
 
     def get_items(
-        self,
-        *args,
-        list_id,
-        genre=None,
-        tmdb_type=None,
-        sort_by=None,
-        sort_how=None,
-        **kwargs
-    ):
+            self, *args, list_id,
+            genre=None, tmdb_type=None, sort_by=None, sort_how=None,
+            **kwargs):
         self.list_properties.list_id = list_id
         self.list_properties.genre = genre
         self.list_properties.tmdb_type = tmdb_type or 'both'
@@ -106,6 +103,9 @@ class ListMDbListCustom(MDbListContainerAPIs, ListStandard):
 class ListMDbListOfficialProperties(ListMDbListCustomProperties):
     @cached_property
     def response_kwgs(self):
+        return self.get_response_kwgs()
+
+    def get_response_kwgs(self):
         response_kwgs = super().response_kwgs
         response_kwgs['mediatype'] = convert_type(self.tmdb_type, 'trakt')
         return response_kwgs

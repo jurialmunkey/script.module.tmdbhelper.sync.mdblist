@@ -17,6 +17,9 @@ class ListMDbListListsProperties(ListMDbListLocalNoCacheProperties):
 
     @cached_property
     def cache_name_tuple(self):
+        return self.get_cache_name_tuple()
+
+    def get_cache_name_tuple(self):
         cache_name_tuple = [
             self.class_name,
             self.page,

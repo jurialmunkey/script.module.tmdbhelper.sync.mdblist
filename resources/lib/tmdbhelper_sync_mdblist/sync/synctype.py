@@ -69,14 +69,13 @@ class SyncAllNextEpisodes(MDbListDataTypeEpisodesInShows):
 
     @timerlock
     def sync_func(self):
-        """ Get next episodes on Trakt """
+        """Get next episodes for MDbList."""
         from tmdbhelper.lib.addon.logger import TimerFunc
         from tmdbhelper_sync_mdblist.sync.nextmeta import MDbListSyncAllNextEpisodesMeta
         with TimerFunc(
             f'Sync: {self.__class__.__name__} get_meta {self.method} {self.item_type}',
             inline=True,
-            log_threshold=0.001
-        ):
+            log_threshold=0.001):
             return MDbListSyncAllNextEpisodesMeta(self).items
 
 
