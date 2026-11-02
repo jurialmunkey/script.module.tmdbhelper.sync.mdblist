@@ -41,7 +41,7 @@ class ListsMDbListItemMapper(MediaItemMapper):
         return [
             (
                 get_localized(32309),
-                RUNSCRIPT.format('sort_mdblist,{}'.format(','.join(f'{k}={v}' for k, v in self.params.items())))
+                RUNSCRIPT.format('sort_list,{}'.format(','.join(f'{k}={v}' for k, v in self.params.items())))
             ),
         ]
 

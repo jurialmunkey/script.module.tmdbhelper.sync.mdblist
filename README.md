@@ -42,7 +42,8 @@ TMDbHelper remains the plugin URL entry point:
 Official lists and streaming charts also accept `tmdb_type=tv`.
 The module owns the API client and rating-response mappings. Skin Shortcuts
 sorting uses the mapper's `sortby_info=mdblist_sortby` property; context-menu
-sorting resolves the module's sorting container through core's sorting command.
+sorting uses core's generic `sort_list` command, which resolves the module's
+sorting container through the provider registry.
 
 ### Saved JSON lists
 
