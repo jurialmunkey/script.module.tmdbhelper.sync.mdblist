@@ -46,12 +46,12 @@ class ListsMDbListItemMapper(MediaItemMapper):
         ]
 
     def get_like_context_menu(self):
-        command = f'like_mdblist={self.meta["id"]}'
-        command = f'{command},delete' if self.delete_like else command
+        command = f'like_list={self.meta["id"]}'
+        command = f'{command},delete=true' if self.delete_like else command
         return [
             (
                 get_localized(32319 if self.delete_like else 32315),
-                RUNSCRIPT.format(command)
+                f'RunScript(script.module.tmdbhelper.sync.mdblist,{command})'
             ),
         ]
 
