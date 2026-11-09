@@ -8,7 +8,7 @@ def run(like_list=None, delete=False):
             'RunScript(plugin.video.themoviedb.helper,configure_sync_provider,'
             'addon_id=script.module.tmdbhelper.sync.mdblist)')
         return
-    from tmdbhelper.lib.sync.providers.registry import SyncProviderRegistry
+    from tmdbhelper_lib.sync.providers.interface import SyncProviderRegistry
     provider = SyncProviderRegistry().find_provider('mdblist')
     if provider is None:
         return

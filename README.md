@@ -79,8 +79,10 @@ RunScript(script.module.tmdbhelper.sync.mdblist,like_list=LISTID,delete=true)
 
 The mapper builds these commands. `actions/like.py` owns the request, result
 dialog, and successful container refresh. The script resolves the provider
-through the registry before accessing its API. Calling it without arguments
-opens provider setup. Core's old `like_mdblist` script route has been removed.
+through `tmdbhelper_lib.sync.providers.interface.SyncProviderRegistry` before
+accessing its API, requiring TMDbHelper 6.21.3 or later. Calling it without
+arguments opens provider setup. Core's old `like_mdblist` script route has been
+removed.
 
 Watched additions use a concrete invalidator that preserves the history
 timestamp for incremental requests; removals invalidate it for a full snapshot.
