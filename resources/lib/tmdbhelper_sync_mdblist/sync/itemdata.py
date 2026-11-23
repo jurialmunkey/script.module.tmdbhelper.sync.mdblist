@@ -177,7 +177,10 @@ class MDbListSyncItemData(SyncItemData):  # TODO: FIXME
 
     def get_progress(self):
         progress = super().get_progress()
-        return float(progress) if isinstance(progress, str) else progress
+        try:
+            return float(progress)
+        except TypeError:
+            return progress
 
     """
     next_episode_object
