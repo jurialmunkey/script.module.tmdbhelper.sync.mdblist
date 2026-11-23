@@ -175,6 +175,10 @@ class MDbListSyncItemData(SyncItemData):  # TODO: FIXME
     def get_runtime(self):
         return self.get_data_by_key('runtime')
 
+    def get_progress(self):
+        progress = super().get_progress()
+        return float(progress) if isinstance(progress, str) else progress
+
     """
     next_episode_object
     """
